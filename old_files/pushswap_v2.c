@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <stdlib.h>
-#include "./libft/libft.h"
-#include "./mylibft/mylibft.h"
+#include "libft/libft.h"
+#include "mylibft/mylibft.h"
 
 //後で消す
 #include <stdio.h>
@@ -79,25 +79,25 @@ void	bclst_print(t_bclist *a, t_bclist *b)
 	b = b->next;
 	while (a_size > b_size)
 	{
-		printf(" %d   \n", a->num);
+		printf(" %11d            \n", a->num);
 		a = a->next;
 		a_size--;
 	}
 	while (b_size > a_size)
 	{
-		printf("   %d \n", b->num);
+		printf("            %11d \n", b->num);
 		b = b->next;
 		b_size--;
 	}
 	while (a_size > 0)
 	{
-		printf(" %d %d \n", a->num, b->num);
+		printf(" %11d %11d \n", a->num, b->num);
 		a = a->next;
 		b = b->next;
 		a_size--;
 	}
-	printf(" - - \n");
-	printf(" a b \n");
+	printf(" ----------- ----------- \n");
+	printf("      a           b      \n");
 }
 
 /* 先頭を入れ替え */
@@ -105,6 +105,7 @@ void	sab(t_bclist *lst)
 {
 	int	tmp;
 
+	write(1, "sab\n", 4);
 	//要素が一個またはからの場合何もしない
 	if (lst->next->next == lst || lst->next == NULL)
 		return ;
@@ -114,6 +115,7 @@ void	sab(t_bclist *lst)
 }
 void	ss(t_bclist *a, t_bclist *b)
 {
+	write(1, "ss\n", 3);
 	sab(a);
 	sab(b);
 }
@@ -125,6 +127,7 @@ void	rab(t_bclist *lst)
 	t_bclist	*lst_top;
 	t_bclist	*tmp;
 
+	write(1, "rab\n", 4);
 	lst_last = lst->prev; //リストの最後
 	lst_top = lst->next;  //リストの最初
 	tmp = lst_top->next;  //リストの2個目
@@ -137,6 +140,7 @@ void	rab(t_bclist *lst)
 }
 void	rr(t_bclist *a, t_bclist *b)
 {
+	write(1, "sr\n", 3);
 	rab(a);
 	rab(b);
 }
@@ -148,6 +152,7 @@ void	rrab(t_bclist *lst)
 	t_bclist	*lst_top;
 	t_bclist	*tmp;
 
+	write(1, "rrab\n", 5);
 	lst_last = lst->prev; //リストの最後
 	lst_top = lst->next;  //リストの最初
 	tmp = lst_last->prev; //リストの最後の一個前
@@ -160,6 +165,7 @@ void	rrab(t_bclist *lst)
 }
 void	rrr(t_bclist *a, t_bclist *b)
 {
+	write(1, "rrr\n", 4);
 	rrab(a);
 	rrab(b);
 }
@@ -172,6 +178,7 @@ void	pa(t_bclist *a, t_bclist *b)
 	t_bclist	*b_top;
 	t_bclist	*tmp;
 
+	write(1, "pa\n", 3);
 	if (b == NULL)
 		return ;
 	a_top = a->next;
@@ -193,6 +200,7 @@ void	pb(t_bclist *a, t_bclist *b)
 	t_bclist	*b_top;
 	t_bclist	*tmp;
 
+	write(1, "pb\n", 3);
 	if (a == NULL)
 		return ;
 	a_top = a;

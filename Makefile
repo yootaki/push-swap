@@ -1,39 +1,51 @@
 
-NAME = push_swap
-DEBUG_DIR = push_swap.dSYM
+PUSH_SWAP = push_swap
+CHECKER = checker
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBS = libft/libft.a mylibft/mylibft.a
+LIBS = includes/libft/libft.a includes/mylibft/mylibft.a
 
-SRCS = pushswap_v2.c
+PS_SRCS = srcs/pushswap.c\
+srcs/commands.c\
+srcs/lst_func.c
 
-OBJS = $(SRCS:.c=.o)
+CH_SRCS = srcs/checker.c\
+srcs/lst_func.c\
+srcs/commands.c\
+includes/get_next_line/get_next_line.c\
+includes/get_next_line/get_next_line_utils.c
+
+OBJS = $(PS_SRCS:.c=.o) $(CH_SRCS:.c=.o)
+
+DEBUG_DIR = push_swap.dSYM
 
 # **************************************************
 # **************************************************
 
 all: $(LIBS)
-	$(CC) $(CFLAGS) -o push_swap $(SRCS) $(LIBS)
+	$(CC) $(CFLAGS) -o push_swap $(PS_SRCS) $(LIBS)
+	$(CC) $(CFLAGS) -o checker $(CH_SRCS) $(LIBS)
 
 $(LIBS):
-	$(MAKE) -C libft/
-	$(MAKE) -C mylibft/
-
-# **************************************************
-# **************************************************
+	$(MAKE) -C includes/libft/
+	$(MAKE) -C includes/mylibft/
 
 bonus: all
+
+# **************************************************
+# **************************************************
 
 clean:
 	rm -f $(OBJS)
 	rm -rf $(DEBUG_DIR)
-	$(MAKE) fclean -C libft/
-	$(MAKE) fclean -C mylibft/
+	$(MAKE) fclean -C includes/libft/
+	$(MAKE) fclean -C includes/mylibft/
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(PUSH_SWAP)
+	rm -f $(CHECKER)
 
 re: fclean all
 

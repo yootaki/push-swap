@@ -16,7 +16,8 @@ CC = gcc
 HEADER = mylibft.h
 SRCS = ft_issmall.c\
 ft_islarge.c\
-ft_atof.c
+ft_atof.c\
+ft_quick_sort.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
