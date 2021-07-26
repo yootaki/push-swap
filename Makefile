@@ -8,16 +8,16 @@ CFLAGS = -Wall -Wextra -Werror
 LIBS = includes/libft/libft.a includes/mylibft/mylibft.a
 
 PS_SRCS = srcs/pushswap.c\
-srcs/commands.c\
-srcs/lst_func.c
 
 CH_SRCS = srcs/checker.c\
-srcs/lst_func.c\
-srcs/commands.c\
 includes/get_next_line/get_next_line.c\
 includes/get_next_line/get_next_line_utils.c
 
-OBJS = $(PS_SRCS:.c=.o) $(CH_SRCS:.c=.o)
+SRCS = srcs/commands_a.c\
+srcs/commands_b.c\
+srcs/commands.c\
+srcs/lst_func.c\
+srcs/utils.c
 
 DEBUG_DIR = push_swap.dSYM
 
@@ -25,8 +25,8 @@ DEBUG_DIR = push_swap.dSYM
 # **************************************************
 
 all: $(LIBS)
-	$(CC) $(CFLAGS) -o push_swap $(PS_SRCS) $(LIBS)
-	$(CC) $(CFLAGS) -o checker $(CH_SRCS) $(LIBS)
+	$(CC) $(CFLAGS) -o push_swap $(PS_SRCS) $(SRCS) $(LIBS)
+	$(CC) $(CFLAGS) -o checker $(CH_SRCS) $(SRCS) $(LIBS)
 
 $(LIBS):
 	$(MAKE) -C includes/libft/
@@ -38,7 +38,6 @@ bonus: all
 # **************************************************
 
 clean:
-	rm -f $(OBJS)
 	rm -rf $(DEBUG_DIR)
 	$(MAKE) fclean -C includes/libft/
 	$(MAKE) fclean -C includes/mylibft/

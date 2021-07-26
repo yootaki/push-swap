@@ -3,15 +3,12 @@
 #include "../includes/push_swap.h"
 
 /* コマンドライン引数をスタックに格納 */
-//malloc等失敗でreturn(1);
-//基数ソート用のインデックス配列を作成&ソート
 int	init_stack(int argc, char **argv, t_bclist *a, int *nums)
 {
 	t_bclist	*tmp;
 	int	i;
 	int	n;
 
-	/* コマンドライン引数で受け取った数字をリストに格納 */
 	n = 0;
 	i = 0;
 	while (++i < argc)
@@ -20,9 +17,9 @@ int	init_stack(int argc, char **argv, t_bclist *a, int *nums)
 		if (nums != NULL)
 			nums[i - 1] = n;
 		tmp = ft_bclstnew(n);
-		ft_bclstadd_back(a, tmp);
 		if (tmp == NULL)
 			return (1);
+		ft_bclstadd_back(a, tmp);
 	}
 	if (nums != NULL)
 		my_quick_sort(nums, 0, argc - 2);
@@ -30,14 +27,13 @@ int	init_stack(int argc, char **argv, t_bclist *a, int *nums)
 }
 
 /* 新しいリストを作成 */
-//numを格納、前後のポインタに自分自身を渡す
 t_bclist	*ft_bclstnew(int num)
 {
 	t_bclist	*lst;
 
 	lst = (t_bclist *)malloc(sizeof(t_bclist));
 	if (lst == NULL)
-		return ((void *)0);
+		return (NULL);
 	lst->prev = lst;
 	lst->next = lst;
 	lst->num = num;
@@ -51,9 +47,7 @@ void	ft_bclstadd_back(t_bclist *top, t_bclist *new)
 
 	if (top == NULL || new == NULL)
 		return ;
-	//リストの最後を取得
 	last = top->prev;
-	//リストを連結
 	top->prev = new;
 	last->next = new;
 	new->prev = last;
@@ -66,6 +60,8 @@ int	ft_bclstsize(t_bclist *lst)
 	int			count;
 	t_bclist	*sentinel;
 
+	if (lst == NULL)
+		return (0);
 	count = 0;
 	sentinel = lst;
 	lst = lst->next;

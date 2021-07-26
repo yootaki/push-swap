@@ -3,17 +3,19 @@
 #include "../includes/push_swap.h"
 
 /* aがソートされているか & bが空か */
-int	check_sort(t_bclist *a, t_bclist *b)
+int	check_sort(t_bclist *a ,t_bclist *b)
 {
 	t_bclist	*lst;
 
 	lst = a->next;
+	/* aがソートされているか */
 	while (lst != a)
 	{
 		if (lst->num > lst->next->num && lst->next != a)
 			return (1);
 		lst = lst->next;
 	}
+	/* bが空になっているか */
 	if (ft_bclstsize(b))
 		return (1);
 	return (0);
@@ -79,29 +81,42 @@ int	main(int argc, char **argv)
 {
 	t_bclist	*stack_a;
 	t_bclist	*stack_b;
-	char		*cmd;
 
+	/* 番兵ノードを作成 */
 	stack_a = ft_bclstnew(0);
 	stack_b = ft_bclstnew(0);
-	cmd = NULL;
+	/* コマンドライン引数の確認とスタックの初期化 */
 	if (argc == 1)
 		return (1);
 	if (init_stack(argc, argv, stack_a, NULL))
-		ch_error_print(stack_a, stack_b, cmd);
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+
+	/* GNLで読みこむ(get_cmdとか名前の関数にする) */
+	//返り値1がまだ読み込み、0がEOF
+	char	*cmd;
 	while (get_next_line(0, &cmd) > 0)
 	{
+		//もしエラー(1)が帰ってきたら終了
 		if (cmd_proc(stack_a, stack_b, cmd))
-			ch_error_print(stack_a, stack_b, cmd);
+		{
+			write(2, "Error\n", 6);
+			return (1);
+		}
 		free(cmd);
 	}
 	if (*cmd != '\0')
-		ch_error_print(stack_a, stack_b, cmd);
+	{
+		free(cmd);
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	/* ソートされているかチェック */
 	if (!check_sort(stack_a, stack_b))
 		write(1, "OK\n", 3);
 	else
 		write(1, "K0\n", 3);
-	// lst_free(stack_a);
-	// lst_free(stack_b);
-	// free(cmd);
 	return (0);
 }
