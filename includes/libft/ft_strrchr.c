@@ -29,11 +29,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (ans);
 }
-
-#include <string.h>
-
-int maint(void)
-{
-	ft_strrchr(NULL, 's');
-	return (0);
-}

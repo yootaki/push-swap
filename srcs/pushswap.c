@@ -15,9 +15,7 @@ int	main(int argc, char **argv)
 		ps_error_print(stack_a, stack_b, nums);
 	if (!check_sort(stack_a, stack_b))
 	{
-		lst_free(stack_a);
-		lst_free(stack_b);
-		free(nums);
+		ps_free_all(stack_a, stack_b, nums);
 		return (0);
 	}
 	else
@@ -28,5 +26,6 @@ int	main(int argc, char **argv)
 		small_sort(argc, stack_a, stack_b);
 	else
 		big_sort(stack_a, stack_b, nums);
+	ps_free_all(stack_a, stack_b, nums);
 	return (0);
 }

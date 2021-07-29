@@ -30,7 +30,7 @@ void	simple_sort(t_bclist *a)
 		rra(a, PS);
 }
 
-void	get_min_num(t_bclist *a, t_bclist *tmp, int a_size)
+void	get_min_num(t_bclist *a, t_bclist *b, t_bclist *tmp, int a_size)
 {
 	int	min;
 	int	n;
@@ -39,8 +39,8 @@ void	get_min_num(t_bclist *a, t_bclist *tmp, int a_size)
 	min = a->next->num;
 	tmp = a->next;
 	n = 1;
-	i = 1;
-	while (i <= a_size)
+	i = 0;
+	while (++i <= a_size)
 	{
 		if (min > tmp->next->num && i < a_size)
 		{
@@ -48,7 +48,6 @@ void	get_min_num(t_bclist *a, t_bclist *tmp, int a_size)
 			n = i;
 		}
 		tmp = tmp->next;
-		i++;
 	}
 	while (tmp->next->num != min)
 	{
@@ -57,6 +56,7 @@ void	get_min_num(t_bclist *a, t_bclist *tmp, int a_size)
 		else
 			rra(tmp, PS);
 	}
+	pb(tmp->next, b, PS);
 }
 
 void	usually_sort(t_bclist *a, t_bclist *b)
@@ -68,8 +68,7 @@ void	usually_sort(t_bclist *a, t_bclist *b)
 	a_size = ft_bclstsize(a);
 	while (a_size > 3)
 	{
-		get_min_num(a, tmp, a_size);
-		pb(tmp->next, b, PS);
+		get_min_num(a, b, tmp, a_size);
 		a_size--;
 	}
 	simple_sort(a);

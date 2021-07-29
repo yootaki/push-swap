@@ -1,5 +1,5 @@
 #ifndef MYLIBFT_H
-#define MYLIBFT_H
+# define MYLIBFT_H
 
 # include "../libft/libft.h"
 

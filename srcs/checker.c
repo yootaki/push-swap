@@ -56,6 +56,14 @@ int	cmd_proc(t_bclist *a, t_bclist *b, char *cmd)
 		return (1);
 }
 
+void	issort(t_bclist *a, t_bclist *b)
+{
+	if (!check_sort(a, b))
+		write(1, "OK\n", 3);
+	else
+		write(1, "K0\n", 3);
+}
+
 int	main(int argc, char **argv)
 {
 	t_bclist	*stack_a;
@@ -63,11 +71,13 @@ int	main(int argc, char **argv)
 	int			*nums;
 	char		*cmd;
 
+	if (argc == 1)
+		return (0);
 	stack_a = ft_bclstnew(0);
 	stack_b = ft_bclstnew(0);
 	nums = (int *)malloc(sizeof(int) * (argc - 1));
 	cmd = NULL;
-	if (argc == 1 || init_stack(argc, argv, stack_a, nums))
+	if (init_stack(argc, argv, stack_a, nums))
 		ch_error_print(stack_a, stack_b, nums, cmd);
 	while (get_next_line(0, &cmd) > 0)
 	{
@@ -77,13 +87,7 @@ int	main(int argc, char **argv)
 	}
 	if (*cmd != '\0')
 		ch_error_print(stack_a, stack_b, nums, cmd);
-	if (!check_sort(stack_a, stack_b))
-		write(1, "OK\n", 3);
-	else
-		write(1, "K0\n", 3);
+	issort(stack_a, stack_b);
+	ch_free_all(stack_a, stack_b, nums, cmd);
 	return (0);
 }
-
-// lst_free(stack_a);
-// lst_free(stack_b);
-// free(cmd);

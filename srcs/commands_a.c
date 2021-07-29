@@ -72,8 +72,10 @@ int	pb(t_bclist *a, t_bclist *b, int type)
 
 	if (type == PS)
 		write(1, "pb\n", 3);
-	if (a == NULL || b == NULL || a->next == a)
+	if (a == NULL || b == NULL)
 		return (1);
+	else if (a->next == a)
+		return (0);
 	a_top = a;
 	b_top = b->next;
 	tmp = a_top->next;

@@ -72,8 +72,10 @@ int	pa(t_bclist *a, t_bclist *b, int type)
 
 	if (type == PS)
 		write(1, "pa\n", 3);
-	if (a == NULL || b == NULL || b->next == b)
+	if (a == NULL || b == NULL)
 		return (1);
+	else if (b->next == b)
+		return (0);
 	a_top = a->next;
 	b_top = b;
 	tmp = b_top->next;
