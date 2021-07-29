@@ -15,7 +15,7 @@ int	rr(t_bclist *a, t_bclist *b, int type)
 {
 	if (type == PS)
 		write(1, "rr\n", 3);
-	if(ra(a, type) || rb(b, type))
+	if (ra(a, type) || rb(b, type))
 		return (1);
 	return (0);
 }

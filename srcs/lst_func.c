@@ -2,31 +2,6 @@
 #include "../includes/mylibft/mylibft.h"
 #include "../includes/push_swap.h"
 
-/* コマンドライン引数をスタックに格納 */
-int	init_stack(int argc, char **argv, t_bclist *a, int *nums)
-{
-	t_bclist	*tmp;
-	int	i;
-	int	n;
-
-	n = 0;
-	i = 0;
-	while (++i < argc)
-	{
-		n = ft_atoi(argv[i]);
-		if (nums != NULL)
-			nums[i - 1] = n;
-		tmp = ft_bclstnew(n);
-		if (tmp == NULL)
-			return (1);
-		ft_bclstadd_back(a, tmp);
-	}
-	if (nums != NULL)
-		my_quick_sort(nums, 0, argc - 2);
-	return (0);
-}
-
-/* 新しいリストを作成 */
 t_bclist	*ft_bclstnew(int num)
 {
 	t_bclist	*lst;
@@ -40,7 +15,6 @@ t_bclist	*ft_bclstnew(int num)
 	return (lst);
 }
 
-/* 新しいリストを既存のリストに追加 */
 void	ft_bclstadd_back(t_bclist *top, t_bclist *new)
 {
 	t_bclist	*last;
@@ -54,7 +28,6 @@ void	ft_bclstadd_back(t_bclist *top, t_bclist *new)
 	new->next = top;
 }
 
-/* リストの数を数える */
 int	ft_bclstsize(t_bclist *lst)
 {
 	int			count;
@@ -71,4 +44,18 @@ int	ft_bclstsize(t_bclist *lst)
 		count++;
 	}
 	return (count);
+}
+
+void	lst_free(t_bclist *lst)
+{
+	t_bclist	*tmp;
+	int			n;
+
+	n = ft_bclstsize(lst);
+	while (n-- >= 0)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
 }

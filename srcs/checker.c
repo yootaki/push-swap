@@ -2,23 +2,6 @@
 #include "../includes/mylibft/mylibft.h"
 #include "../includes/push_swap.h"
 
-/* aがソートされているか & bが空か */
-int	check_sort(t_bclist *a, t_bclist *b)
-{
-	t_bclist	*lst;
-
-	lst = a->next;
-	while (lst != a)
-	{
-		if (lst->num > lst->next->num && lst->next != a)
-			return (1);
-		lst = lst->next;
-	}
-	if (ft_bclstsize(b))
-		return (1);
-	return (0);
-}
-
 int	strlen_ps(const char *s)
 {
 	int	i;
@@ -29,7 +12,6 @@ int	strlen_ps(const char *s)
 	return (i);
 }
 
-/* 読み込んだコマンドとコマンドが一致しているか確認 */
 int	strncmp_ps(const char *s1, const char *s2)
 {
 	int	i;
@@ -46,7 +28,6 @@ int	strncmp_ps(const char *s1, const char *s2)
 	return (0);
 }
 
-/* コマンドを数値に変換して配列に格納 */
 int	cmd_proc(t_bclist *a, t_bclist *b, char *cmd)
 {
 	if (!strncmp_ps(cmd, "sa\n"))
@@ -79,29 +60,30 @@ int	main(int argc, char **argv)
 {
 	t_bclist	*stack_a;
 	t_bclist	*stack_b;
+	int			*nums;
 	char		*cmd;
 
 	stack_a = ft_bclstnew(0);
 	stack_b = ft_bclstnew(0);
+	nums = (int *)malloc(sizeof(int) * (argc - 1));
 	cmd = NULL;
-	if (argc == 1)
-		return (1);
-	if (init_stack(argc, argv, stack_a, NULL))
-		ch_error_print(stack_a, stack_b, cmd);
+	if (argc == 1 || init_stack(argc, argv, stack_a, nums))
+		ch_error_print(stack_a, stack_b, nums, cmd);
 	while (get_next_line(0, &cmd) > 0)
 	{
 		if (cmd_proc(stack_a, stack_b, cmd))
-			ch_error_print(stack_a, stack_b, cmd);
+			ch_error_print(stack_a, stack_b, nums, cmd);
 		free(cmd);
 	}
 	if (*cmd != '\0')
-		ch_error_print(stack_a, stack_b, cmd);
+		ch_error_print(stack_a, stack_b, nums, cmd);
 	if (!check_sort(stack_a, stack_b))
 		write(1, "OK\n", 3);
 	else
 		write(1, "K0\n", 3);
-	// lst_free(stack_a);
-	// lst_free(stack_b);
-	// free(cmd);
 	return (0);
 }
+
+// lst_free(stack_a);
+// lst_free(stack_b);
+// free(cmd);

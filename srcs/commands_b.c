@@ -64,8 +64,6 @@ int	rrb(t_bclist *b, int type)
 	return (0);
 }
 
-/* bの先頭をaの先頭に */
-/* bはダミーの次(つまりスタックの一番上渡す) */
 int	pa(t_bclist *a, t_bclist *b, int type)
 {
 	t_bclist	*a_top;

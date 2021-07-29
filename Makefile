@@ -8,12 +8,15 @@ CFLAGS = -Wall -Wextra -Werror
 LIBS = includes/libft/libft.a includes/mylibft/mylibft.a
 
 PS_SRCS = srcs/pushswap.c\
+srcs/small_sort.c\
+srcs/radix_sort.c
 
 CH_SRCS = srcs/checker.c\
 includes/get_next_line/get_next_line.c\
 includes/get_next_line/get_next_line_utils.c
 
-SRCS = srcs/commands_a.c\
+SRCS = srcs/args_check.c\
+srcs/commands_a.c\
 srcs/commands_b.c\
 srcs/commands.c\
 srcs/lst_func.c\

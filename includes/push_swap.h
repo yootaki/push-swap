@@ -13,20 +13,28 @@ typedef struct s_bclist
 	int	num;
 }t_bclist;
 
-/* スタックを初期化 */
+/* args check */
+int	check_sort(t_bclist *a, t_bclist *b);
+int	check_duplicate(int *nums, int n);
+int	check_over(int sign, int num, int next_num);
+int	argv_isdigit(const char *str);
 int	init_stack(int argc, char **argv, t_bclist *a, int *nums);
 
-/* リスト系関数 */
+/* list func */
 t_bclist	*ft_bclstnew(int num);
 void		ft_bclstadd_back(t_bclist *top, t_bclist *new);
 int			ft_bclstsize(t_bclist *lst);
 void		lst_free(t_bclist *lst);
 
-/* エラー */
-void	ps_error_print(t_bclist *a, t_bclist *b);
-void	ch_error_print(t_bclist *a, t_bclist *b, char *cmd);
+/* sort */
+void	small_sort(int argc, t_bclist *a, t_bclist *b);
+void	big_sort(t_bclist *a, t_bclist *b, int *nums);
 
-/* コマンド */
+/* error */
+void	ps_error_print(t_bclist *a, t_bclist *b, int *nums);
+void	ch_error_print(t_bclist *a, t_bclist *b, int *nums, char *cmd);
+
+/* commands */
 int	sa(t_bclist *a, int type);
 int	sb(t_bclist *b, int type);
 int	ss(t_bclist *a, t_bclist *b, int type);

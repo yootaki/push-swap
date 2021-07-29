@@ -16,7 +16,6 @@ int	sa(t_bclist *a, int type)
 	return (0);
 }
 
-/* 先頭を一番後ろに */
 int	ra(t_bclist *a, int type)
 {
 	t_bclist	*a_last;
@@ -41,7 +40,6 @@ int	ra(t_bclist *a, int type)
 	return (0);
 }
 
-/* 一番後ろを先頭に */
 int	rra(t_bclist *a, int type)
 {
 	t_bclist	*a_last;
@@ -66,8 +64,6 @@ int	rra(t_bclist *a, int type)
 	return (0);
 }
 
-/* aの先頭をbの先頭に */
-/* aはダミーの次(つまりスタックの一番上渡す) */
 int	pb(t_bclist *a, t_bclist *b, int type)
 {
 	t_bclist	*a_top;
