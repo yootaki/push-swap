@@ -8,6 +8,8 @@ int	main(int argc, char **argv)
 	t_bclist	*stack_b;
 	int			*nums;
 
+	if (argc == 1)
+		return (0);
 	stack_a = ft_bclstnew(0);
 	stack_b = ft_bclstnew(0);
 	nums = (int *)malloc(sizeof(int) * (argc - 1));
@@ -20,9 +22,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		my_quick_sort(nums, 0, argc - 2);
-	if (argc == 2)
-		return (0);
-	else if (argc < 7)
+	if (argc < 7)
 		small_sort(argc, stack_a, stack_b);
 	else
 		big_sort(stack_a, stack_b, nums);
