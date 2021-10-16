@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:44:48 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/05 11:44:49 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:35:47 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	my_quick_sort(int *x, int left, int right);
 int		ft_islarge(int a, int b);
-int		ft_issmall(int a, int b);
+void	*ft_issmall(void *a, void *b);
 double	ft_atof(char *s);
 
 #endif

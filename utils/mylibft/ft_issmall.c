@@ -6,14 +6,14 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:16 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/05 11:43:17 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:36:01 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylibft.h"
 
 /* aとbを比較して小さい方の数字を返す */
-int	ft_issmall(int a, int b)
+void	*ft_issmall(void *a, void *b)
 {
 	if (a < b)
 		return (a);

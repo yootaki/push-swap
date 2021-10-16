@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:33 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:30:13 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:22:42 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,34 @@ int	argv_isdigit(const char *str)
 	return (0);
 }
 
-int	init_stack(int argc, char **argv, t_dclist *a, int *nums)
+int	validate_args(int argc, char **argv)
 {
-	t_dclist	*tmp;
-	int			i;
+	int	i;
 
-	if (argc < 2 || argc > 1000)
+	if (argc < 2 || argc > 1000)//この1000は良くない
 		return (1);
 	i = 0;
 	while (++i < argc)
 	{
 		if (argv_isdigit(argv[i]))
 			return (1);
-		nums[i - 1] = ft_atoi(argv[i]);
 	}
+	return (0);
+}
+
+int	init_stack(int argc, char **argv, t_dclist *a, t_dclist *b, int *nums)
+{
+	t_dclist	*tmp;
+	int			i;
+
+	a = ft_bclstnew(NULL);
+	b = ft_bclstnew(NULL);
+	nums = (int *)malloc(sizeof(int) * (argc - 1));
+	if (!a || !b || !nums)
+		return (1);
+	i = 0;
+	while (++i < argc)
+		nums[i - 1] = ft_atoi(argv[i]);
 	i = -1;
 	while (++i < argc - 1)
 	{
@@ -119,6 +133,7 @@ int	init_stack(int argc, char **argv, t_dclist *a, int *nums)
 			return (1);
 		ft_bclstadd_back(a, tmp);
 	}
+	//これはargvをstrcmpしてvalidateできると思う
 	if (check_duplicate(nums, argc - 1))
 		return (1);
 	return (0);

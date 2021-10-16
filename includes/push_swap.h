@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:28 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:26:20 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:26:51 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int			check_sort(t_dclist *a, t_dclist *b);
 int			check_duplicate(int *nums, int n);
 int			check_over(int sign, int num, int next_num);
 int			argv_isdigit(const char *str);
-int			init_stack(int argc, char **argv, t_dclist *a, int *nums);
+int			validate_args(int argc, char **argv);
+int			init_stack(int argc, char **argv, t_dclist *a, t_dclist *b, int *nums);
 
 /* list func */
 t_dclist	*ft_bclstnew(int num);

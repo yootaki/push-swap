@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:56 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:33:13 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:33:13 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /* 乱数3つ以下のソート */
 void	simple_sort(t_dclist *a)
 {
-	int	lst1;
-	int	lst2;
-	int	last;
+	void	*lst1;
+	void	*lst2;
+	void	*last;
 
 	last = a->prev->content;
 	lst1 = a->next->content;
@@ -42,7 +42,7 @@ void	simple_sort(t_dclist *a)
 
 void	get_min_num(t_dclist *a, t_dclist *b, t_dclist *tmp, int a_size)
 {
-	int	min;
+	void	*min;
 	int	n;
 	int	i;
 

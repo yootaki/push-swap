@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:48 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:27:00 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 22:33:28 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,12 @@ int	ft_dclstsize(t_dclist *lst)
 void	dclst_free(t_dclist *lst)
 {
 	t_dclist	*tmp;
-	int			n;
 
-	n = ft_bclstsize(lst);
-	while (n-- >= 0)
+	tmp = lst->next;
+	while (tmp->content != NULL)
 	{
-		tmp = lst->next;
-		free(lst);
-		lst = tmp;
+		free(tmp);
+		tmp = tmp->next;
 	}
+	free(lst);
 }
