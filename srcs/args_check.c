@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args_check.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 11:43:33 by yootaki           #+#    #+#             */
+/*   Updated: 2021/10/12 20:06:07 by yootaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft/libft.h"
 #include "../includes/mylibft/mylibft.h"
 #include "../includes/push_swap.h"
@@ -68,6 +80,8 @@ int	argv_isdigit(const char *str)
 	sign = 1;
 	num = 0;
 	i = 0;
+	if (str[i] == '\0')
+		return (1);
 	if (str[i] == '-')
 	{
 		sign = -1;

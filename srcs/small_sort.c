@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 11:43:56 by yootaki           #+#    #+#             */
+/*   Updated: 2021/10/05 11:43:57 by yootaki          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft/libft.h"
 #include "../includes/mylibft/mylibft.h"
 #include "../includes/push_swap.h"
@@ -82,7 +94,7 @@ void	usually_sort(t_bclist *a, t_bclist *b)
 void	small_sort(int argc, t_bclist *a, t_bclist *b)
 {
 	if (argc == 3 && \
-	ft_issmall(a->next->num, a->next->next->num))
+	ft_issmall(a->next->num, a->next->next->num) == a->next->next->num)
 		sa(a, PS);
 	else if (argc == 4)
 		simple_sort(a);
