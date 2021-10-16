@@ -6,12 +6,10 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:59 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/05 11:44:00 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:01:48 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line/get_next_line.h"
-#include "../includes/mylibft/mylibft.h"
 #include "../includes/push_swap.h"
 
 void	ps_free_all(t_bclist *a, t_bclist *b, int *nums)

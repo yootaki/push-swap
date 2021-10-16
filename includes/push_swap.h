@@ -6,14 +6,15 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:28 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/05 11:43:29 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:01:10 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../includes/libft/libft.h"
+# include "../utils/libft/libft.h"
+# include "../utils/mylibft/mylibft.h"
 
 # define PS 0
 # define CH 1

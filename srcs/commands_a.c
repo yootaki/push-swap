@@ -6,12 +6,10 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:39 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/05 11:43:40 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:01:27 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft/libft.h"
-#include "../includes/mylibft/mylibft.h"
 #include "../includes/push_swap.h"
 
 int	sa(t_bclist *a, int type)
