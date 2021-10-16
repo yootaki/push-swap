@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:36 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:02:13 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:48:35 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	strncmp_ps(const char *s1, const char *s2)
 	return (0);
 }
 
-int	cmd_proc(t_bclist *a, t_bclist *b, char *cmd)
+int	cmd_proc(t_dclist *a, t_dclist *b, char *cmd)
 {
 	if (!strncmp_ps(cmd, "sa\n"))
 		return (sa(a, CH));
@@ -67,7 +67,7 @@ int	cmd_proc(t_bclist *a, t_bclist *b, char *cmd)
 		return (1);
 }
 
-void	issort(t_bclist *a, t_bclist *b)
+void	issort(t_dclist *a, t_dclist *b)
 {
 	if (!check_sort(a, b))
 		write(1, "OK\n", 3);
@@ -77,8 +77,8 @@ void	issort(t_bclist *a, t_bclist *b)
 
 int	main(int argc, char **argv)
 {
-	t_bclist	*stack_a;
-	t_bclist	*stack_b;
+	t_dclist	*stack_a;
+	t_dclist	*stack_b;
 	int			*nums;
 	char		*cmd;
 

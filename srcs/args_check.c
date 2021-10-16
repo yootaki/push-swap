@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:33 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:23 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:30:13 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	check_duplicate(int *nums, int n)
 	return (0);
 }
 
-int	check_sort(t_bclist *a, t_bclist *b)
+int	check_sort(t_dclist *a, t_dclist *b)
 {
-	t_bclist	*lst;
+	t_dclist	*lst;
 
 	lst = a->next;
 	while (lst != a)
 	{
-		if (lst->num > lst->next->num && lst->next != a)
+		if (lst->content > lst->next->content && lst->next != a)
 			return (1);
 		lst = lst->next;
 	}
@@ -97,9 +97,9 @@ int	argv_isdigit(const char *str)
 	return (0);
 }
 
-int	init_stack(int argc, char **argv, t_bclist *a, int *nums)
+int	init_stack(int argc, char **argv, t_dclist *a, int *nums)
 {
-	t_bclist	*tmp;
+	t_dclist	*tmp;
 	int			i;
 
 	if (argc < 2 || argc > 1000)

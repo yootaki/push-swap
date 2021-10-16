@@ -6,15 +6,15 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:54 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:41 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:36:21 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	make_stack_simple(t_bclist *a, int *nums, int n)
+void	make_stack_simple(t_dclist *a, int *nums, int n)
 {
-	t_bclist	*tmp;
+	t_dclist	*tmp;
 	int			i;
 	int			j;
 
@@ -25,9 +25,9 @@ void	make_stack_simple(t_bclist *a, int *nums, int n)
 		j = -1;
 		while (++j < n)
 		{
-			if (tmp->num == nums[j])
+			if (tmp->content == nums[j])
 			{
-				tmp->num = j;
+				tmp->content = j;
 				break ;
 			}
 		}
@@ -35,10 +35,10 @@ void	make_stack_simple(t_bclist *a, int *nums, int n)
 	}
 }
 
-void	my_radix_sort(t_bclist *a, t_bclist *b, int max_bit, int n)
+void	my_radix_sort(t_dclist *a, t_dclist *b, int max_bit, int n)
 {
-	t_bclist	*tmp_a;
-	t_bclist	*tmp_b;
+	t_dclist	*tmp_a;
+	t_dclist	*tmp_b;
 	int			i;
 	int			j;
 
@@ -50,7 +50,7 @@ void	my_radix_sort(t_bclist *a, t_bclist *b, int max_bit, int n)
 		while (++j < n)
 		{
 			tmp_a = a->next;
-			if (((tmp_a->num >> i) & 1) == 1)
+			if ((((int)(tmp_a->content) >> i) & 1) == 1)
 				ra(a, PS);
 			else
 				pb(tmp_a, b, PS);
@@ -64,7 +64,7 @@ void	my_radix_sort(t_bclist *a, t_bclist *b, int max_bit, int n)
 	}
 }
 
-void	big_sort(t_bclist *a, t_bclist *b, int *nums)
+void	big_sort(t_dclist *a, t_dclist *b, int *nums)
 {
 	int	max_num;
 	int	max_bit;

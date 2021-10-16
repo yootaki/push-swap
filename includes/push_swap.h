@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:28 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:10 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:26:20 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,47 +19,47 @@
 # define PS 0
 # define CH 1
 
-typedef struct s_bclist
+typedef struct s_dclist
 {
-	struct s_bclist	*prev;
-	struct s_bclist	*next;
-	int				num;
-}t_bclist;
+	struct s_dclist	*prev;
+	struct s_dclist	*next;
+	void			*content;
+}t_dclist;
 
 /* args check */
-int			check_sort(t_bclist *a, t_bclist *b);
+int			check_sort(t_dclist *a, t_dclist *b);
 int			check_duplicate(int *nums, int n);
 int			check_over(int sign, int num, int next_num);
 int			argv_isdigit(const char *str);
-int			init_stack(int argc, char **argv, t_bclist *a, int *nums);
+int			init_stack(int argc, char **argv, t_dclist *a, int *nums);
 
 /* list func */
-t_bclist	*ft_bclstnew(int num);
-void		ft_bclstadd_back(t_bclist *top, t_bclist *new);
-int			ft_bclstsize(t_bclist *lst);
-void		lst_free(t_bclist *lst);
+t_dclist	*ft_bclstnew(int num);
+void		ft_bclstadd_back(t_dclist *top, t_dclist *new);
+int			ft_bclstsize(t_dclist *lst);
+void		lst_free(t_dclist *lst);
 
 /* sort */
-void		small_sort(int argc, t_bclist *a, t_bclist *b);
-void		big_sort(t_bclist *a, t_bclist *b, int *nums);
+void		small_sort(int argc, t_dclist *a, t_dclist *b);
+void		big_sort(t_dclist *a, t_dclist *b, int *nums);
 
 /* commands */
-int			sa(t_bclist *a, int type);
-int			sb(t_bclist *b, int type);
-int			ss(t_bclist *a, t_bclist *b, int type);
-int			ra(t_bclist *a, int type);
-int			rb(t_bclist *b, int type);
-int			rr(t_bclist *a, t_bclist *b, int type);
-int			rra(t_bclist *a, int type);
-int			rrb(t_bclist *b, int type);
-int			rrr(t_bclist *a, t_bclist *b, int type);
-int			pa(t_bclist *a, t_bclist *b, int type);
-int			pb(t_bclist *a, t_bclist *b, int type);
+int			sa(t_dclist *a, int type);
+int			sb(t_dclist *b, int type);
+int			ss(t_dclist *a, t_dclist *b, int type);
+int			ra(t_dclist *a, int type);
+int			rb(t_dclist *b, int type);
+int			rr(t_dclist *a, t_dclist *b, int type);
+int			rra(t_dclist *a, int type);
+int			rrb(t_dclist *b, int type);
+int			rrr(t_dclist *a, t_dclist *b, int type);
+int			pa(t_dclist *a, t_dclist *b, int type);
+int			pb(t_dclist *a, t_dclist *b, int type);
 
 /* utils */
-void		ps_free_all(t_bclist *a, t_bclist *b, int *nums);
-void		ch_free_all(t_bclist *a, t_bclist *b, int *nums, char *cmd);
-void		ps_error_print(t_bclist *a, t_bclist *b, int *nums);
-void		ch_error_print(t_bclist *a, t_bclist *b, int *nums, char *cmd);
+void		ps_free_all(t_dclist *a, t_dclist *b, int *nums);
+void		ch_free_all(t_dclist *a, t_dclist *b, int *nums, char *cmd);
+void		ps_error_print(t_dclist *a, t_dclist *b, int *nums);
+void		ch_error_print(t_dclist *a, t_dclist *b, int *nums, char *cmd);
 
 #endif

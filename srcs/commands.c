@@ -6,13 +6,13 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:44 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:34 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:47:59 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ss(t_bclist *a, t_bclist *b, int type)
+int	ss(t_dclist *a, t_dclist *b, int type)
 {
 	if (type == PS)
 		write(1, "ss\n", 3);
@@ -21,7 +21,7 @@ int	ss(t_bclist *a, t_bclist *b, int type)
 	return (0);
 }
 
-int	rr(t_bclist *a, t_bclist *b, int type)
+int	rr(t_dclist *a, t_dclist *b, int type)
 {
 	if (type == PS)
 		write(1, "rr\n", 3);
@@ -30,7 +30,7 @@ int	rr(t_bclist *a, t_bclist *b, int type)
 	return (0);
 }
 
-int	rrr(t_bclist *a, t_bclist *b, int type)
+int	rrr(t_dclist *a, t_dclist *b, int type)
 {
 	if (type == PS)
 		write(1, "rrr\n", 4);

@@ -6,28 +6,28 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:48 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:36 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:27:00 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_bclist	*ft_bclstnew(int num)
+t_dclist	*ft_dclstnew(void *content)
 {
-	t_bclist	*lst;
+	t_dclist	*lst;
 
-	lst = (t_bclist *)malloc(sizeof(t_bclist));
+	lst = (t_dclist *)malloc(sizeof(t_dclist));
 	if (lst == NULL)
 		return (NULL);
 	lst->prev = lst;
 	lst->next = lst;
-	lst->num = num;
+	lst->content = content;
 	return (lst);
 }
 
-void	ft_bclstadd_back(t_bclist *top, t_bclist *new)
+void	ft_dclstadd_back(t_dclist *top, t_dclist *new)
 {
-	t_bclist	*last;
+	t_dclist	*last;
 
 	if (top == NULL || new == NULL)
 		return ;
@@ -38,10 +38,10 @@ void	ft_bclstadd_back(t_bclist *top, t_bclist *new)
 	new->next = top;
 }
 
-int	ft_bclstsize(t_bclist *lst)
+int	ft_dclstsize(t_dclist *lst)
 {
 	int			count;
-	t_bclist	*sentinel;
+	t_dclist	*sentinel;
 
 	if (lst == NULL)
 		return (0);
@@ -56,9 +56,9 @@ int	ft_bclstsize(t_bclist *lst)
 	return (count);
 }
 
-void	lst_free(t_bclist *lst)
+void	dclst_free(t_dclist *lst)
 {
-	t_bclist	*tmp;
+	t_dclist	*tmp;
 	int			n;
 
 	n = ft_bclstsize(lst);

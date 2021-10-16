@@ -6,22 +6,22 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:56 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:44 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:33:13 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /* 乱数3つ以下のソート */
-void	simple_sort(t_bclist *a)
+void	simple_sort(t_dclist *a)
 {
 	int	lst1;
 	int	lst2;
 	int	last;
 
-	last = a->prev->num;
-	lst1 = a->next->num;
-	lst2 = a->next->next->num;
+	last = a->prev->content;
+	lst1 = a->next->content;
+	lst2 = a->next->next->content;
 	if (lst1 > lst2 && lst2 < last && last > lst1)
 		sa(a, PS);
 	else if (lst1 > lst2 && lst2 > last && last < lst1)
@@ -40,26 +40,26 @@ void	simple_sort(t_bclist *a)
 		rra(a, PS);
 }
 
-void	get_min_num(t_bclist *a, t_bclist *b, t_bclist *tmp, int a_size)
+void	get_min_num(t_dclist *a, t_dclist *b, t_dclist *tmp, int a_size)
 {
 	int	min;
 	int	n;
 	int	i;
 
-	min = a->next->num;
+	min = a->next->content;
 	tmp = a->next;
 	n = 1;
 	i = 0;
 	while (++i <= a_size)
 	{
-		if (min > tmp->next->num && i < a_size)
+		if (min > tmp->next->content && i < a_size)
 		{
-			min = tmp->next->num;
+			min = tmp->next->content;
 			n = i;
 		}
 		tmp = tmp->next;
 	}
-	while (tmp->next->num != min)
+	while (tmp->next->content != min)
 	{
 		if (n <= a_size / 2)
 			ra(tmp, PS);
@@ -69,9 +69,9 @@ void	get_min_num(t_bclist *a, t_bclist *b, t_bclist *tmp, int a_size)
 	pb(tmp->next, b, PS);
 }
 
-void	usually_sort(t_bclist *a, t_bclist *b)
+void	usually_sort(t_dclist *a, t_dclist *b)
 {
-	t_bclist	*tmp;
+	t_dclist	*tmp;
 	int			a_size;
 
 	tmp = NULL;
@@ -89,10 +89,10 @@ void	usually_sort(t_bclist *a, t_bclist *b)
 	}
 }
 
-void	small_sort(int argc, t_bclist *a, t_bclist *b)
+void	small_sort(int argc, t_dclist *a, t_dclist *b)
 {
 	if (argc == 3 && \
-	ft_issmall(a->next->num, a->next->next->num) == a->next->next->num)
+	ft_issmall(a->next->content, a->next->next->content) == a->next->next->content)
 		sa(a, PS);
 	else if (argc == 4)
 		simple_sort(a);

@@ -6,13 +6,13 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:42 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:30 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:47:26 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	sb(t_bclist *b, int type)
+int	sb(t_dclist *b, int type)
 {
 	int	tmp;
 
@@ -20,17 +20,17 @@ int	sb(t_bclist *b, int type)
 		write(1, "sb\n", 3);
 	if (b->next->next == b || b->next == NULL)
 		return (1);
-	tmp = b->next->num;
-	b->next->num = b->next->next->num;
-	b->next->next->num = tmp;
+	tmp = b->next->content;
+	b->next->content = b->next->next->content;
+	b->next->next->content = tmp;
 	return (0);
 }
 
-int	rb(t_bclist *b, int type)
+int	rb(t_dclist *b, int type)
 {
-	t_bclist	*b_last;
-	t_bclist	*b_top;
-	t_bclist	*tmp;
+	t_dclist	*b_last;
+	t_dclist	*b_top;
+	t_dclist	*tmp;
 
 	if (type == PS)
 		write(1, "rb\n", 3);
@@ -50,11 +50,11 @@ int	rb(t_bclist *b, int type)
 	return (0);
 }
 
-int	rrb(t_bclist *b, int type)
+int	rrb(t_dclist *b, int type)
 {
-	t_bclist	*b_last;
-	t_bclist	*b_top;
-	t_bclist	*tmp;
+	t_dclist	*b_last;
+	t_dclist	*b_top;
+	t_dclist	*tmp;
 
 	if (type == PS)
 		write(1, "rrb\n", 4);
@@ -74,11 +74,11 @@ int	rrb(t_bclist *b, int type)
 	return (0);
 }
 
-int	pa(t_bclist *a, t_bclist *b, int type)
+int	pa(t_dclist *a, t_dclist *b, int type)
 {
-	t_bclist	*a_top;
-	t_bclist	*b_top;
-	t_bclist	*tmp;
+	t_dclist	*a_top;
+	t_dclist	*b_top;
+	t_dclist	*tmp;
 
 	if (type == PS)
 		write(1, "pa\n", 3);

@@ -6,7 +6,7 @@
 /*   By: yootaki <yootaki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:43:51 by yootaki           #+#    #+#             */
-/*   Updated: 2021/10/16 21:01:39 by yootaki          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:27:43 by yootaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_bclist	*stack_a;
-	t_bclist	*stack_b;
+	t_dclist	*stack_a;
+	t_dclist	*stack_b;
 	int			*nums;
 
 	if (argc == 1)
 		return (0);
-	stack_a = ft_bclstnew(0);
-	stack_b = ft_bclstnew(0);
+	stack_a = ft_bclstnew(NULL);
+	stack_b = ft_bclstnew(NULL);
 	nums = (int *)malloc(sizeof(int) * (argc - 1));
 	if (init_stack(argc, argv, stack_a, nums))
 		ps_error_print(stack_a, stack_b, nums);
